@@ -1,4 +1,4 @@
-# Created at 2022-10-01T14:23:14.469
+# Created at 2022-10-01T15:18:58.993
 org.apache.maven.surefire.api.testset.TestSetFailedException: Suite file C:\Users\USER\eclipse-workspace\Automation-Testing\selenium-testng\login-credentials\testng-trello.xml is not a valid file
 	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.locateTestSets(TestNGXmlTestSuite.java:98)
 	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:122)

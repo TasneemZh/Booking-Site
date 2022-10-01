@@ -27,6 +27,7 @@ public class SignIn {
 	public void loginIntoFigma(String email, String password) throws InterruptedException {
 		Thread.sleep(3000);
 		this.driver.switchTo().frame(this.driver.findElement(By.xpath("//iframe[@title='Auth']")));
+		Thread.sleep(3000);
 		WebElement emailField = this.driver.findElement(By.id("email"));
 		emailField.sendKeys(email);
 

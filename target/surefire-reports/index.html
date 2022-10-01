@@ -143,8 +143,8 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite name=&quot;testng-suite&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;test-login&quot;&gt;
+&lt;suite name=&quot;testng-suite&quot; verbose=&quot;0&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;test-login&quot; verbose=&quot;0&quot;&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;login.LoginTest&quot;&gt;
@@ -195,7 +195,7 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testLogin')
 data.setCell(0, 2, 'login.LoginTest')
-data.setCell(0, 3, 3335);
+data.setCell(0, 3, 3358);
 window.suiteTableData['testng_suite']= { tableData: data, tableDiv: 'times-div-testng_suite'}
 return data;
 }
@@ -235,7 +235,7 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">shutDown</span>
-                <span class="method-start">3357 ms</span>
+                <span class="method-start">3369 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
