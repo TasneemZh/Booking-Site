@@ -42,10 +42,11 @@ public class LoginTest {
 	}
 
 	@AfterSuite
-	public void shutDown() throws InterruptedException {
+	public void shutDown() throws InterruptedException, IOException {
 		SignIn signIn = new SignIn(this.driver);
 		signIn.getSepecificButton("Log in");
 		signIn.loginIntoFigma(this.userEmail, this.userPassword);
+		this.driver.close();
 		this.driver.quit();
 	}
 }

@@ -20,6 +20,9 @@ public class OpenBrowser {
 		options.addArguments("--start-maximized");
 		options.addArguments("--headless");
 		options.addArguments("--disable-infobars");
+		options.addArguments("--window-size=1920,1080");
+		options.addArguments("--ignore-certificate-errors");
+		options.addArguments("--allow-running-insecure-content");
 
 		WebDriver webDriver = new ChromeDriver(options);
 		return webDriver;
