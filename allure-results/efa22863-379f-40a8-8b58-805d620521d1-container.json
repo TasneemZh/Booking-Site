@@ -1,0 +1,1 @@
+{"uuid":"efa22863-379f-40a8-8b58-805d620521d1","name":"testng-suite","children":["8e486997-06ef-44aa-ad6d-4480669a84cf"],"befores":[],"afters":[{"name":"shutDown","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1664638227958,"stop":1664638250336}],"start":1664638222411,"stop":1664638250336}
