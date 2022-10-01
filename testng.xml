@@ -1,0 +1,11 @@
+<suite name="testng-suite">
+	<test name="test-login">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="login.LoginTest" />
+			<methods>
+				<include name="testLogin" />
+			</methods>
+		</classes>
+	</test>
+</suite>
