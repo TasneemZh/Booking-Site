@@ -1,0 +1,8 @@
+# causing unstable build in Jenkins
+target
+
+# allure report
+allure-results
+
+# testNG report
+test-output
