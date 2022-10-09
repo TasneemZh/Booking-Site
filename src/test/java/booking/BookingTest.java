@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -55,6 +53,7 @@ public class BookingTest {
 			throws InterruptedException, IOException {
 		this.browserType = new OpenBrowser();
 		this.driver = this.browserType.createDriver(this.browser);
+		this.driver.manage().window().maximize();
 		this.driver.get(this.pageUrl);
 		this.map = new HashMap<String, String>();
 
@@ -62,16 +61,17 @@ public class BookingTest {
 		this.homepage.fillCityFields(cityName);
 		Thread.sleep(3000);
 
-		WebElement autoFillList = this.homepage.getAutoFillList();
+//		WebElement autoFillList = this.homepage.getAutoFillList();
+//		Thread.sleep(10000);
 
-		Actions actions = new Actions(driver);
-		actions.click(autoFillList);
-		actions.sendKeys("\b");
-		actions.build().perform();
-		Thread.sleep(3000);
-
-		this.homepage.chooseFromAutoFillList(0);
-		Thread.sleep(3000);
+//		Actions actions = new Actions(driver);
+//		actions.click(autoFillList);
+//		actions.sendKeys("\b");
+//		actions.build().perform();
+//		Thread.sleep(3000);
+//
+//		this.homepage.chooseFromAutoFillList(0);
+//		Thread.sleep(3000);
 
 		this.homepage.getCurrentYear();
 		Thread.sleep(3000);
@@ -119,9 +119,14 @@ public class BookingTest {
 		return bookingInput;
 	}
 
-	@AfterSuite
+	@Test
 	public void writeResultsToCsv() throws Exception {
 		this.manageCsv.writeToCsv(this.filePathResult, this.list);
+		Assert.assertTrue(true);
+	}
+
+	@AfterSuite
+	public void shutDown() {
 		this.driver.quit();
 	}
 }

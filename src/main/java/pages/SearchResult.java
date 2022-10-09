@@ -32,6 +32,9 @@ public class SearchResult {
 		this.map.clear();
 
 		List<WebElement> hotelNames = this.driver.findElements(By.xpath("//a[@data-testid='title-link']/div"));
+		System.out.println("hotelNames: " +hotelNames.size());
+		System.out.println("hotelValues: " +hotelNames.get(0));
+
 		String hotelName = hotelNames.get(resultNumber).getText();
 		this.map.put("Hotel name", hotelName);
 

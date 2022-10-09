@@ -5,6 +5,7 @@
 			<class name="booking.BookingTest" />
 			<methods>
 				<include name="testSearch" />
+				<include name="writeResultsToCsv" />
 			</methods>
 		</classes>
 	</test>

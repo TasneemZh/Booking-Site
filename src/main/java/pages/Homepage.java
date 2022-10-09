@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import browsers.TakeScreenshot;
@@ -47,9 +46,11 @@ public class Homepage {
 		return this.driver.findElement(By.xpath("//input[@id='ss']"));
 	}
 
-	public void chooseFromAutoFillList(int index) {
-		WebElement autoFillList = this.wait.until(
-				ExpectedConditions.visibilityOf(this.driver.findElement(By.xpath("//li[@data-i='" + index + "']"))));
+	public void chooseFromAutoFillList(int index) throws IOException {
+//		WebElement autoFillList = this.wait.until(
+//				ExpectedConditions.visibilityOf(this.driver.findElement(By.xpath("//ul[@aria-label='List of suggested destinations ']/li[1]"))));
+		
+		WebElement autoFillList = this.driver.findElement(By.xpath("//li[@data-i='0']"));
 		this.js.executeScript("arguments[0].click();", autoFillList);
 	}
 
@@ -62,10 +63,13 @@ public class Homepage {
 		this.js.executeScript("arguments[0].click();", dateBox);
 	}
 
-	public void getSearchResult(String cityName) throws IOException {
+	public void getSearchResult(String cityName) throws IOException, InterruptedException {
 		String screenshotName = cityName + "_address.jpg";
 		this.screenshot.takeScreenshot(screenshotName);
 		Allure.addAttachment(screenshotName, screenshotsPath + screenshotName);
 		this.js.executeScript("document.getElementsByClassName('sb-searchbox__button ')[0].click();");
+		
+		String screenshotName2 = cityName + "_issue.jpg";
+		this.screenshot.takeScreenshot(screenshotName2);
 	}
 }
