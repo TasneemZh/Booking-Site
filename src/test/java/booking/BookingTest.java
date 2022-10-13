@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -58,25 +60,11 @@ public class BookingTest {
 		this.map = new HashMap<String, String>();
 
 		this.homepage = new Homepage(this.driver);
-		this.homepage.fillCityFields(cityName);
-		Thread.sleep(3000);
-
-//		WebElement autoFillList = this.homepage.getAutoFillList();
-//		Thread.sleep(10000);
-
-//		Actions actions = new Actions(driver);
-//		actions.click(autoFillList);
-//		actions.sendKeys("\b");
-//		actions.build().perform();
-//		Thread.sleep(3000);
-//
-//		this.homepage.chooseFromAutoFillList(0);
-//		Thread.sleep(3000);
 
 		this.homepage.getCurrentYear();
 		Thread.sleep(3000);
 
-		this.homepage.clickOnSpanField("checkin");
+		this.homepage.clickOnSpanField("Check-in Date");
 		Thread.sleep(3000);
 
 		this.homepage.selectDateFromCalendar(checkInDate);
@@ -84,11 +72,27 @@ public class BookingTest {
 
 		this.homepage.selectDateFromCalendar(checkOutDate);
 		Thread.sleep(3000);
-
-		this.homepage.getSearchResult(cityName);
+		
+		this.homepage.fillCityFields(cityName);
+		Thread.sleep(3000);
+		
+		WebElement autoFillList = this.homepage.getAutoFillList();
 		Thread.sleep(3000);
 
+		Actions actions = new Actions(driver);
+		actions.click(autoFillList);
+		actions.sendKeys("\b");
+		actions.build().perform();
+		Thread.sleep(3000);
+
+		this.homepage.chooseFromAutoFillList(0);
+		Thread.sleep(3000);
+
+		this.homepage.getSearchResult(cityName);
+		Thread.sleep(10000);
+
 		this.searchResult = new SearchResult(this.driver);
+		Thread.sleep(3000);
 
 		this.map = this.searchResult.getHotelInfo(0, cityName);
 		this.map.put("City", cityName);
@@ -105,7 +109,7 @@ public class BookingTest {
 	@DataProvider
 	public Object[][] csvFile() throws IOException, CsvException {
 		int rowLine = 0;
-		Object[][] bookingInput = new Object[3][3];
+		Object[][] bookingInput = new Object[1][3]; // change it to 3 3
 
 		int totalRows = this.manageCsv.readFile(this.filePath);
 
