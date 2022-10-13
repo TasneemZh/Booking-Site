@@ -40,9 +40,6 @@ public class Homepage {
 				this.js.executeScript("arguments[0].click();", btn);
 			}
 		}
-//		WebElement spanBox = this.driver
-//				.findElement(By.xpath("//div[@data-calendar2-type='" + fieldName + "']/*/span"));
-//		this.js.executeScript("arguments[0].click();", spanBox);
 	}
 
 	public void fillCityFields(String cityName) throws InterruptedException {
@@ -55,13 +52,7 @@ public class Homepage {
 		return this.driver.findElement(By.xpath("//input[@name='ss']"));
 	}
 
-	public void chooseFromAutoFillList(int index) throws IOException {
-//		WebElement autoFillList = this.wait.until(
-//				ExpectedConditions.visibilityOf(this.driver.findElement(By.xpath("//ul[@aria-label='List of suggested destinations ']/li[1]"))));
-
-//		WebElement autoFillList = this.driver.findElement(By.xpath("//li[@data-i='0']"));
-//		this.js.executeScript("arguments[0].click();", autoFillList);
-		
+	public void chooseFromAutoFillList(int index) throws IOException {		
 		List<WebElement> autoFillList = this.driver.findElements(By.xpath("//div[@tabindex='-1']"));
 		this.js.executeScript("arguments[0].click();", autoFillList.get(index));
 	}
