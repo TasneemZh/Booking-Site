@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -60,24 +59,19 @@ public class BookingTest {
 		this.map = new HashMap<String, String>();
 
 		this.homepage = new Homepage(this.driver);
+		Thread.sleep(10000);
 
-		this.homepage.getCurrentYear();
-		Thread.sleep(3000);
+//		this.homepage.setTravelDate("Check-in", checkInDate);
+//		Thread.sleep(3000);
+//
+//		this.homepage.setTravelDate("Check-out", checkOutDate);
+//		Thread.sleep(3000);
 
-		this.homepage.clickOnSpanField("Check-in Date");
-		Thread.sleep(3000);
-
-		this.homepage.selectDateFromCalendar(checkInDate);
-		Thread.sleep(3000);
-
-		this.homepage.selectDateFromCalendar(checkOutDate);
-		Thread.sleep(3000);
-		
 		this.homepage.fillCityFields(cityName);
 		Thread.sleep(3000);
-		
+
 		WebElement autoFillList = this.homepage.getAutoFillList();
-		Thread.sleep(3000);
+		Thread.sleep(30000);
 
 		Actions actions = new Actions(driver);
 		actions.click(autoFillList);
@@ -86,12 +80,15 @@ public class BookingTest {
 		Thread.sleep(3000);
 
 		this.homepage.chooseFromAutoFillList(0);
-		Thread.sleep(3000);
-
-		this.homepage.getSearchResult(cityName);
 		Thread.sleep(10000);
 
+		this.homepage.getSearchResult(cityName);
+		Thread.sleep(3000);
+
 		this.searchResult = new SearchResult(this.driver);
+		Thread.sleep(10000);
+
+		this.searchResult.clickOnPage();
 		Thread.sleep(3000);
 
 		this.map = this.searchResult.getHotelInfo(0, cityName);
@@ -109,7 +106,7 @@ public class BookingTest {
 	@DataProvider
 	public Object[][] csvFile() throws IOException, CsvException {
 		int rowLine = 0;
-		Object[][] bookingInput = new Object[1][3]; // change it to 3 3
+		Object[][] bookingInput = new Object[3][3];
 
 		int totalRows = this.manageCsv.readFile(this.filePath);
 
@@ -127,10 +124,5 @@ public class BookingTest {
 	public void writeResultsToCsv() throws Exception {
 		this.manageCsv.writeToCsv(this.filePathResult, this.list);
 		Assert.assertTrue(true);
-	}
-
-	@AfterSuite
-	public void shutDown() {
-		this.driver.quit();
 	}
 }

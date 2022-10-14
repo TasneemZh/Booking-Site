@@ -1,5 +1,5 @@
 <suite name="testng-suite">
-	<parameter name="browser" value="chrome" />
+	<parameter name="browser" value="firefox" />
 	<test name="test-booking-site">
 		<classes>
 			<class name="booking.BookingTest" />
