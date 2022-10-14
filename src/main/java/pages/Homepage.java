@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,8 +44,12 @@ public class Homepage {
 	}
 
 	public void setTravelDate(String fieldName, String date) {
-		this.js.executeScript(
-				"document.querySelector('[data-testid=\"" + fieldName + "\"]').textContent = \'" + date + "\';");
+		try {
+			this.js.executeScript(
+					"document.querySelector('[data-testid=\"" + fieldName + "\"]').textContent = \'" + date + "\';");
+		} catch (JavascriptException e) {
+			System.out.println("TypeError: " + e);
+		}
 	}
 
 	public void getSearchResult(String cityName) throws IOException, InterruptedException {
@@ -54,9 +59,7 @@ public class Homepage {
 
 		List<WebElement> submitBtns = this.driver.findElements(By.xpath("//button[@type='submit']/span"));
 		for (WebElement btn : submitBtns) {
-			System.out.println("Button ");
 			if (btn.getText().contains("Search")) {
-				System.out.println("Correct result " + btn);
 				this.js.executeScript("arguments[0].click();", btn);
 			}
 		}
