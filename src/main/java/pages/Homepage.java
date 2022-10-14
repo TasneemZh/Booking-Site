@@ -31,8 +31,6 @@ public class Homepage {
 
 	public void fillCityFields(String cityName) throws InterruptedException {
 		this.js.executeScript("document.getElementsByName('ss')[0].value='" + cityName + "';");
-//		Thread.sleep(3000);
-//		this.js.executeScript("document.body.click();");
 	}
 
 	public WebElement getAutoFillList() {
@@ -44,9 +42,9 @@ public class Homepage {
 		this.js.executeScript("arguments[0].click();", autoFillList.get(index));
 	}
 
-	public void setTravelDate(String placeholderField, String date) {
-		this.js.executeScript("document.querySelector('[data-placeholder=\"" + placeholderField
-				+ "\"]').textContent = \'" + date + "\';");
+	public void setTravelDate(String fieldName, String date) {
+		this.js.executeScript(
+				"document.querySelector('[data-testid=\"" + fieldName + "\"]').textContent = \'" + date + "\';");
 	}
 
 	public void getSearchResult(String cityName) throws IOException, InterruptedException {

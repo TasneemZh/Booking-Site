@@ -59,13 +59,13 @@ public class BookingTest {
 		this.map = new HashMap<String, String>();
 
 		this.homepage = new Homepage(this.driver);
-		Thread.sleep(10000);
+		Thread.sleep(0000);
 
-//		this.homepage.setTravelDate("Check-in", checkInDate);
-//		Thread.sleep(3000);
-//
-//		this.homepage.setTravelDate("Check-out", checkOutDate);
-//		Thread.sleep(3000);
+		this.homepage.setTravelDate("date-display-field-start", checkInDate);
+		Thread.sleep(3000);
+
+		this.homepage.setTravelDate("date-display-field-end", checkOutDate);
+		Thread.sleep(3000);
 
 		this.homepage.fillCityFields(cityName);
 		Thread.sleep(3000);
@@ -78,7 +78,7 @@ public class BookingTest {
 		actions.sendKeys("\b");
 		actions.build().perform();
 		Thread.sleep(3000);
-
+		
 		this.homepage.chooseFromAutoFillList(0);
 		Thread.sleep(10000);
 
